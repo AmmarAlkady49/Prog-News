@@ -10,7 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  font_awesome_flutter: ^10.8.0
   google_nav_bar: ^5.0.7
+  iconsax: ^0.0.8
+  line_icons: ^2.0.3
 
 dev_dependencies:
   flutter_lints: ^4.0.0
