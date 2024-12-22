@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prog_news/core/utils/app_constants.dart';
 import 'package:prog_news/core/utils/theme/app_theme.dart';
+import 'package:prog_news/google_bottom_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: AppConstants.APP_NAME,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.mainTheme,
-      // home: const BottomNavBar(),
+      home: const GoogleBottomNavBar(),
     );
   }
 }
