@@ -26,6 +26,7 @@ class _GoogleBottomNavBarState extends State<GoogleBottomNavBar> {
       create: (context) {
         final cubit = HomeCubit();
         cubit.getTopHeadLines();
+        cubit.getRecommendationArticles();
         return cubit;
       },
       child: const HomePage(),

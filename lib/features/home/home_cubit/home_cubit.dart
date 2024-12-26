@@ -24,4 +24,20 @@ class HomeCubit extends Cubit<HomeState> {
           message: 'failed to load top headlines ${e.toString()}'));
     }
   }
+
+  Future<void> getRecommendationArticles() async {
+    emit(RecommendationLoading());
+    try {
+      final parameterBody = TopHeadlinesParamterBody(
+        category: 'technology',
+        page: 1,
+        pageSize: 7,
+      );
+      final result = await homeServices.getTopHeadLines(parameterBody);
+      emit(RecommendationLoaded(articles: result.articles));
+    } catch (e) {
+      emit(RecommendationError(
+          message: 'failed to load top headlines ${e.toString()}'));
+    }
+  }
 }
