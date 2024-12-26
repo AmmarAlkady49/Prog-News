@@ -13,7 +13,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(TopHeadlinesLoading());
     try {
       final parameterBody = TopHeadlinesParamterBody(
-        category: 'business',
+        // category: 'business',
         page: 1,
         pageSize: 5,
       );
