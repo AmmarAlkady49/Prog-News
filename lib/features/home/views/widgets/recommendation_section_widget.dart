@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:prog_news/core/utils/theme/app_colors.dart';
 import 'package:prog_news/features/home/models/top_headlines_api_response.dart';
 
 class RecommendationSectionWidget extends StatelessWidget {
@@ -22,6 +24,11 @@ class RecommendationSectionWidget extends StatelessWidget {
             fit: BoxFit.cover,
             width: size.width * 0.35,
             height: size.height * 0.18,
+            placeholder: (context, url) => LoadingAnimationWidget.flickr(
+              leftDotColor: AppColors.primary,
+              rightDotColor: AppColors.grey3,
+              size: 40,
+            ),
           ),
         ),
         const SizedBox(width: 10),
