@@ -17,7 +17,7 @@ class HomeServices {
             headers: headers,
           ));
       if (response.statusCode == 200) {
-        return TopHeadlinesApiResponse.fromMap(response.data);
+        return TopHeadlinesApiResponse.fromMap(response.data); 
       } else {
         throw Exception(
             'failed to load top headlines ${response.statusMessage}');

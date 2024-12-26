@@ -29,6 +29,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                   imageUrl: item.urlToImage ??
                       'https://nbhc.ca/sites/default/files/styles/article/public/default_images/news-default-image%402x_0.png?itok=B4jML1jF',
                   fit: BoxFit.cover,
+                  width: 1000.0,
                   height: size.height * 1,
                 ),
                 Positioned(
@@ -67,7 +68,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                         ],
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        stops: [0.1, 1.0],
+                        stops: [0.05, 1.0],
                       ),
                     ),
                     padding: const EdgeInsets.only(

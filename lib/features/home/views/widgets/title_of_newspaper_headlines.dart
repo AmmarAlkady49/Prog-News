@@ -14,13 +14,16 @@ class TitleOfNewspaperHeadlines extends StatelessWidget {
         DateTime.parse(articles.publishedAt ?? DateTime.now().toString());
     final publishedDate = DateFormat.yMMMd().format(parsedDate);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Text(
               articles.source!.name ?? 'Unknown',
-              style: const TextStyle(
-                  fontWeight: FontWeight.w500, color: Colors.white),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(fontWeight: FontWeight.w500, color: Colors.white),
             ),
             const SizedBox(width: 4),
             const Icon(
