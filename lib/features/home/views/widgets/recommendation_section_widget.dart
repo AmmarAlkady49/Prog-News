@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:prog_news/core/utils/theme/app_colors.dart';
-import 'package:prog_news/features/home/models/top_headlines_api_response.dart';
+import 'package:prog_news/core/utils/models/articles_api_response.dart';
 
 class RecommendationSectionWidget extends StatelessWidget {
   final Articles articles;

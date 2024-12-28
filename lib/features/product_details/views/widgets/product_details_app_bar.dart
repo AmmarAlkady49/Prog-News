@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prog_news/features/home/views/widgets/my_custom_icon.dart';
 import 'package:prog_news/core/utils/widgets/my_custom_icon_transparent.dart';
 
 class ProductDetailsAppBar extends StatelessWidget {

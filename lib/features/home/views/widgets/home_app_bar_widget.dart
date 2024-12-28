@@ -17,7 +17,7 @@ class HomeAppBarWidget extends StatelessWidget {
           const Spacer(),
           MyCustomIcon(
               onTap: () {
-                // Navigator.pushNamed(context, AppRoutes.search);
+                Navigator.pushNamed(context, AppRoutes.search);
               },
               icon: Iconsax.search_normal_14),
           const SizedBox(width: 8),

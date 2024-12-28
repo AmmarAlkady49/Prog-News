@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:prog_news/features/home/models/top_headlines_api_response.dart';
+import 'package:prog_news/core/utils/models/articles_api_response.dart';
 import 'package:prog_news/features/product_details/views/widgets/body_of_product_details_widget.dart';
 import 'package:prog_news/features/product_details/views/widgets/product_details_app_bar.dart';
 import 'package:prog_news/features/product_details/views/widgets/title_of_product_details_widget.dart';

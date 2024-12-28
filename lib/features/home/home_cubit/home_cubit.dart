@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prog_news/features/home/models/top_headlines_api_response.dart';
+import 'package:prog_news/core/utils/models/articles_api_response.dart';
 import 'package:prog_news/features/home/models/top_headlines_paramter_body.dart';
 import 'package:prog_news/features/home/services/home_services.dart';
 
