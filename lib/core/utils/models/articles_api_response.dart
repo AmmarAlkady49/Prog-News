@@ -1,9 +1,9 @@
-class TopHeadlinesApiResponse {
+class ArticlesApiResponse {
   final String status;
   final int totalResults;
   final List<Articles>? articles;
 
-  const TopHeadlinesApiResponse(
+  const ArticlesApiResponse(
       {required this.status, required this.totalResults, this.articles});
 
   Map<String, dynamic> toMap() {
@@ -14,8 +14,8 @@ class TopHeadlinesApiResponse {
     };
   }
 
-  factory TopHeadlinesApiResponse.fromMap(Map<String, dynamic> map) {
-    return TopHeadlinesApiResponse(
+  factory ArticlesApiResponse.fromMap(Map<String, dynamic> map) {
+    return ArticlesApiResponse(
       status: map['status'] as String,
       totalResults: map['totalResults'] as int,
       articles: List<Articles>.from(
