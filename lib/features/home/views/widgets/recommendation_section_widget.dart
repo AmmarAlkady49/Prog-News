@@ -41,6 +41,8 @@ class RecommendationSectionWidget extends StatelessWidget {
               children: [
                 Text(
                   articles.author ?? 'Unknown',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,

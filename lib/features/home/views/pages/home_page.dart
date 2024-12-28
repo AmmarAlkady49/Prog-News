@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prog_news/core/utils/route/app_routes.dart';
 import 'package:prog_news/features/home/home_cubit/home_cubit.dart';
 import 'package:prog_news/features/home/views/widgets/custom_carousel_slider.dart';
 import 'package:prog_news/features/home/views/widgets/home_app_bar_widget.dart';
@@ -74,8 +75,17 @@ class HomePage extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (context, index) => Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: RecommendationSectionWidget(
-                              articles: recommendationState.articles![index]),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.productDetail,
+                                arguments: recommendationState.articles![index],
+                              );
+                            },
+                            child: RecommendationSectionWidget(
+                                articles: recommendationState.articles![index]),
+                          ),
                         ),
                       );
                     } else {

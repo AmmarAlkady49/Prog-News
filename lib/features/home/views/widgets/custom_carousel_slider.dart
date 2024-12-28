@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:prog_news/core/utils/route/app_routes.dart';
 import 'package:prog_news/core/utils/theme/app_colors.dart';
 import 'package:prog_news/features/home/models/top_headlines_api_response.dart';
 import 'package:prog_news/features/home/views/widgets/title_of_newspaper_headlines.dart';
@@ -22,88 +23,94 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
     final size = MediaQuery.of(context).size;
 
     final List<Widget> imageSliders = widget.articles
-        .map((item) => Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                  bottomLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(35),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25), // Shadow color
-                    blurRadius: 10.0, // Spread of the shadow
-                    offset: Offset(0, 4), // Position of the shadow
+        .map((item) => InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.productDetail,
+                    arguments: item);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                    bottomLeft: Radius.circular(35),
+                    bottomRight: Radius.circular(35),
                   ),
-                ],
-              ),
-              child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-                  child: Stack(
-                    children: <Widget>[
-                      CachedNetworkImage(
-                        imageUrl: item.urlToImage ??
-                            'https://nbhc.ca/sites/default/files/styles/article/public/default_images/news-default-image%402x_0.png?itok=B4jML1jF',
-                        fit: BoxFit.cover,
-                        width: 1000.0,
-                        height: size.height * 1,
-                        placeholder: (context, url) =>
-                            LoadingAnimationWidget.flickr(
-                          leftDotColor: AppColors.primary,
-                          rightDotColor: AppColors.grey3,
-                          size: 40,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      blurRadius: 10.0,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                    child: Stack(
+                      children: <Widget>[
+                        CachedNetworkImage(
+                          imageUrl: item.urlToImage ??
+                              'https://nbhc.ca/sites/default/files/styles/article/public/default_images/news-default-image%402x_0.png?itok=B4jML1jF',
+                          fit: BoxFit.cover,
+                          width: 1000.0,
+                          height: size.height * 1,
+                          placeholder: (context, url) =>
+                              LoadingAnimationWidget.flickr(
+                            leftDotColor: AppColors.primary,
+                            rightDotColor: AppColors.grey3,
+                            size: 40,
+                          ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
                         ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                      Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 12),
-                            child: Container(
-                              height: size.height * 0.04,
-                              width: size.width * 0.22,
-                              decoration: BoxDecoration(
-                                  color: AppColors.primary,
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: Center(
-                                child: Text('General',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500)),
+                        Positioned(
+                            left: 0,
+                            top: 0,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 12),
+                              child: Container(
+                                height: size.height * 0.04,
+                                width: size.width * 0.22,
+                                decoration: BoxDecoration(
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(30)),
+                                child: Center(
+                                  child: Text('General',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500)),
+                                ),
+                              ),
+                            )),
+                        Positioned(
+                          bottom: 0.0,
+                          left: 0.0,
+                          right: 0.0,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(200, 0, 0, 0),
+                                  Color.fromARGB(0, 0, 0, 0)
+                                ],
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                stops: [0.05, 1.0],
                               ),
                             ),
-                          )),
-                      Positioned(
-                        bottom: 0.0,
-                        left: 0.0,
-                        right: 0.0,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color.fromARGB(200, 0, 0, 0),
-                                Color.fromARGB(0, 0, 0, 0)
-                              ],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                              stops: [0.05, 1.0],
-                            ),
+                            padding: const EdgeInsets.only(
+                                bottom: 15.0, left: 20.0, right: 20),
+                            child: TitleOfNewspaperHeadlines(
+                                articles: widget.articles[_current]),
                           ),
-                          padding: const EdgeInsets.only(
-                              bottom: 15.0, left: 20.0, right: 20),
-                          child: TitleOfNewspaperHeadlines(
-                              articles: widget.articles[_current]),
                         ),
-                      ),
-                    ],
-                  )),
+                      ],
+                    )),
+              ),
             ))
         .toList();
     return Column(children: [
@@ -112,7 +119,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           items: imageSliders,
           carouselController: _controller,
           options: CarouselOptions(
-              autoPlay: false,
+              autoPlay: true,
               enlargeCenterPage: true,
               aspectRatio: 15 / 9,
               onPageChanged: (index, reason) {
