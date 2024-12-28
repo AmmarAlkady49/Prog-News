@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:prog_news/core/utils/route/app_routes.dart';
 import 'package:prog_news/features/home/views/widgets/my_custom_icon.dart';
 
 class HomeAppBarWidget extends StatelessWidget {
@@ -14,7 +15,11 @@ class HomeAppBarWidget extends StatelessWidget {
         children: [
           MyCustomIcon(onTap: () {}, icon: CupertinoIcons.line_horizontal_3),
           const Spacer(),
-          MyCustomIcon(onTap: () {}, icon: Iconsax.search_normal_14),
+          MyCustomIcon(
+              onTap: () {
+                // Navigator.pushNamed(context, AppRoutes.search);
+              },
+              icon: Iconsax.search_normal_14),
           const SizedBox(width: 8),
           MyCustomIcon(onTap: () {}, icon: Iconsax.notification),
         ],
